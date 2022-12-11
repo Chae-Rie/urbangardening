@@ -13,5 +13,5 @@ Wahrscheinlich ist es smart dann jeweils wieder neue branches aufzumachen.
 # Nice to have
 
 https://padlet.com/martingreve/bjo1dl5856ko14hy
-https://roboticsbackend.com/arduino-create-library/
-https://arduino.stackexchange.com/questions/40393/what-is-the-relationship-of-an-arduino-ino-file-to-main-cpp
+<br> https://roboticsbackend.com/arduino-create-library/
+<br> https://arduino.stackexchange.com/questions/40393/what-is-the-relationship-of-an-arduino-ino-file-to-main-cpp
