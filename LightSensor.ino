@@ -13,7 +13,6 @@ void setup() {
 
 void loop() {
   analogValue = analogRead(LIGHT_SENSOR_PIN);
-  
   if(analogValue < ANALOG_THRESHOLD)
     digitalWrite(LED_PIN, HIGH);
   else
