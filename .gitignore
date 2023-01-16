@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+
+# Arduino gitignore file
+.DS_Store
+bin/*/
+*build-*
+*build*
+*~
+build-tmp/
+Makefile
+doc/
+debug.txt
+.ycm_extra_conf.pyc
+.ropeproject
