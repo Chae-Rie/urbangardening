@@ -16,3 +16,8 @@ ggf. dann Lampe einschalten -> regelmäßig pollen ob das Ausleuchten der Lampe 
 ---
 # Offene Fragestellung
 Ideen sammeln 
+
+
+Nice to have:
+https://roboticsbackend.com/arduino-create-library/
+https://roboticsbackend.com/arduino-object-oriented-programming-oop/

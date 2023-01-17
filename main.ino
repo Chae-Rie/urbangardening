@@ -1,10 +1,5 @@
-// Vorab definierte Konstanten
 
-const int LIGHT_SENSOR_PIN = A0; 
-const int LED_PIN          = 3;  
-// Können die PIN-Belegungen so bleiben?
-const int ANALOG_THRESHOLD = 500; // Ab welchem Wert soll die LED angehen?
-int analogValue = 0;
+
 
 
 void setup() {
