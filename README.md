@@ -21,4 +21,4 @@ bewerten, dass genug Wasser in dem Ding drin ist.
 
 Ideen sammeln 
 
-Hier könnte ein Link stehen
+Suicide?
