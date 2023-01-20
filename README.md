@@ -22,3 +22,5 @@ bewerten, dass genug Wasser in dem Ding drin ist.
 Ideen sammeln 
 
 Suicide?
+
+https://www.derpade.de/tutorial-arduino-cactus-soil-moisture-und-wasserpumpe-ansteuern/
