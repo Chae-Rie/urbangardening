@@ -19,5 +19,5 @@ Wasserpumpe fängt mit 5V direkt an loszupumpen -> Scheint kein seperates Interf
 Wie kommen wir an den Wert des Wasserspiegels? Wir haben eine einfache China Wasserpumpe; Aber keinen Schwimmer oder irgendeinen anderen Indikator um zu
 bewerten, dass genug Wasser in dem Wassertank drin ist. 
 
-> Schleife im Code, der periodisch auf dem Display warnt. "Wasserstand könnte niedrig sein"-Type Beat 
+> Schleife im Code, der periodisch auf dem Display warnt. "Wasserstand könnte niedrig sein"-Type Beat.
 > Periode bestimmen anhand der Durchflussgeschwindigkeit der Pumpe und der Regelmäßigkeit, wie oft gegossen wird. 
