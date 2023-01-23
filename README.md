@@ -21,3 +21,10 @@ bewerten, dass genug Wasser in dem Wassertank drin ist.
 
 > Schleife im Code, der periodisch auf dem Display warnt. "Wasserstand könnte niedrig sein"-Type Beat.
 > Periode bestimmen anhand der Durchflussgeschwindigkeit der Pumpe und der Regelmäßigkeit, wie oft gegossen wird. 
+
+---
+
+# Links
+
+https://forum.arduino.cc/t/wasserpumpe-mit-uno-steuern/302520
+
