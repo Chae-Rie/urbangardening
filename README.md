@@ -28,3 +28,11 @@ bewerten, dass genug Wasser in dem Wassertank drin ist.
 
 https://forum.arduino.cc/t/wasserpumpe-mit-uno-steuern/302520
 
+---
+
+# Funktionsbeschreibung
+
+Wasserpumpe wird mit 5V gespeist und hat nur zwei Modi, on and off. 
+Wasserpumpe wird aus externem Wassertank/-behälter gefüttert und leitet das Wasser über einen angeschlossenen Schlauch ins Innere des Kits.
+Bewässerung von oben per Tropfbewässerung. Kurze Seiten des Deckels werden mit Lichtstreifen bestückt und die langen Seiten werden mit dem Schlauch bestückt. 
+Der Schlauch bekommt kleine Löcher direkt über den Pflanzen, um Tropf- oder Regenbewässerung zu simulieren. (Druck der Pumpe testen!!)
