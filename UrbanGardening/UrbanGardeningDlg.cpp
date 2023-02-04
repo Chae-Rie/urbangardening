@@ -153,10 +153,17 @@ HCURSOR CUrbanGardeningDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-void CUrbanGardeningDlg::OnDestroyWindow()
+BOOL CUrbanGardeningDlg::DestroyWindow()
 {
 	// Als zentraler Punkt, um vor dem Schließen der Anwendung Objekte oder andere endgültigen
 	// Tasks beenden zu können
-	CWnd::DestroyWindow();
+	return CDialogEx::DestroyWindow();
+}
+
+void CUrbanGardeningDlg::ChangeAccess(BOOL CanConnect)
+{
+	// Um die Nutzbarkeit der Buttons und sonstigen Steuelemente für den Nutzer einzuschränken
+	// und vorab Bugs/Abuse zu vermeiden, sollten diese Steuerelemente erst freigegeben werden,
+	// wenn einer erfolgreiche Verbindung hergestellt ist
 }
 
