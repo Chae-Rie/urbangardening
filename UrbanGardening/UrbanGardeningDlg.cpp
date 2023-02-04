@@ -153,3 +153,10 @@ HCURSOR CUrbanGardeningDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+void CUrbanGardeningDlg::OnDestroyWindow()
+{
+	// Als zentraler Punkt, um vor dem Schließen der Anwendung Objekte oder andere endgültigen
+	// Tasks beenden zu können
+	CWnd::DestroyWindow();
+}
+
