@@ -165,5 +165,8 @@ void CUrbanGardeningDlg::ChangeAccess(BOOL CanConnect)
 	// Um die Nutzbarkeit der Buttons und sonstigen Steuelemente für den Nutzer einzuschränken
 	// und vorab Bugs/Abuse zu vermeiden, sollten diese Steuerelemente erst freigegeben werden,
 	// wenn einer erfolgreiche Verbindung hergestellt ist
+	
+	// GetDlgItem(IDC_CONNECT)->EnableWindow(CanConnect); Beispiel wenn CanConnect TRUE
+	// GetDlgItem(IDC_CONNECT)->EnableWindow(!CanConnect); Beispiel wenn CanConnect FALSE
 }
 
