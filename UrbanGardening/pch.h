@@ -10,5 +10,5 @@
 // add headers that you want to pre-compile here
 #include "framework.h"
 #include "boost/asio.hpp"
-
+#include <iostream>
 #endif //PCH_H

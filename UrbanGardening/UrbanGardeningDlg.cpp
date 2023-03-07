@@ -7,6 +7,7 @@
 #include "UrbanGardening.h"
 #include "UrbanGardeningDlg.h"
 #include "afxdialogex.h"
+#include "boost/serialization/serialization.hpp"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -66,6 +67,8 @@ BEGIN_MESSAGE_MAP(CUrbanGardeningDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_STATUS_LIGHT, &CUrbanGardeningDlg::OnBnClickedStatusLight)
+	ON_BN_CLICKED(IDC_CONNECT, &CUrbanGardeningDlg::OnBnClickedConnect)
+	ON_BN_CLICKED(IDC_DISCONNECT, &CUrbanGardeningDlg::OnBnClickedDisconnect)
 END_MESSAGE_MAP()
 
 
@@ -175,5 +178,18 @@ void CUrbanGardeningDlg::ChangeAccess(BOOL CanConnect)
 
 void CUrbanGardeningDlg::OnBnClickedStatusLight()
 {
-	
+	// Einen eindeutigen String versenden, der wenn korrekt empfangen den Arduino auf Port: COM3 veranlasst Informationen auszusenden
+
+}
+
+
+void CUrbanGardeningDlg::OnBnClickedConnect()
+{
+	// TODO: Add your control notification handler code here
+}
+
+
+void CUrbanGardeningDlg::OnBnClickedDisconnect()
+{
+	// TODO: Add your control notification handler code here
 }
