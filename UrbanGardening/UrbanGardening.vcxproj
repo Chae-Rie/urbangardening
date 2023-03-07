@@ -104,6 +104,7 @@
     <ClInclude Include="MessageCodes.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SerialConnection.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UrbanGardening.h" />
     <ClInclude Include="UrbanGardeningDlg.h" />
@@ -113,6 +114,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SerialConnection.cpp" />
     <ClCompile Include="UrbanGardening.cpp" />
     <ClCompile Include="UrbanGardeningDlg.cpp" />
   </ItemGroup>
