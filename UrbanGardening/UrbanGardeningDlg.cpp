@@ -6,6 +6,7 @@
 #include "framework.h"
 #include "UrbanGardening.h"
 #include "UrbanGardeningDlg.h"
+#include "SerialConnection.h"
 #include "afxdialogex.h"
 #include "boost/serialization/serialization.hpp"
 
@@ -183,13 +184,25 @@ void CUrbanGardeningDlg::OnBnClickedStatusLight()
 }
 
 
-void CUrbanGardeningDlg::OnBnClickedConnect()
+int CUrbanGardeningDlg::OnBnClickedConnect()
 {
-	// TODO: Add your control notification handler code here
+	try 
+	{
+		SerialConnection arduino("COM3", 9600);
+		arduino.writeString("Test123\n");
+	}
+	catch(boost::system::system_error& e)
+	{
+		std::cout << "Fehler: " << e.what() << std::endl; // TODO: In dem GUI ausgeben anstatt der Konsole
+		return 1;
+	}
+
 }
 
 
 void CUrbanGardeningDlg::OnBnClickedDisconnect()
 {
+	// Da es sich um keine richtige verbindungsorientierte Verbindung handelt, reicht es denke ich mal das Objekt zu
+	// löschen und den User darüber in Kenntnis zu setzen + Sperren der Buttons
 	// TODO: Add your control notification handler code here
 }

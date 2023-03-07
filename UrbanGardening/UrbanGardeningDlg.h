@@ -39,6 +39,6 @@ protected:
 	void ChangeAccess(BOOL CanConnect);
 public:
 	afx_msg void OnBnClickedStatusLight();
-	afx_msg void OnBnClickedConnect();
+	afx_msg int OnBnClickedConnect();
 	afx_msg void OnBnClickedDisconnect();
 };
