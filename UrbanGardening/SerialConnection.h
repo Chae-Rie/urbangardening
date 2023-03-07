@@ -1,4 +1,6 @@
 #pragma once
+
+// TODO: Den Code richtig auf die cpp Datei aufteilen.
 class SerialConnection
 {
 public:

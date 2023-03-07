@@ -184,18 +184,23 @@ void CUrbanGardeningDlg::OnBnClickedStatusLight()
 }
 
 
-int CUrbanGardeningDlg::OnBnClickedConnect()
+void CUrbanGardeningDlg::OnBnClickedConnect()
 {
 	try 
 	{
 		SerialConnection arduino("COM3", 9600);
 		arduino.writeString("Test123\n");
+
+		std::cout << arduino.readLine() << std::endl;
 	}
 	catch(boost::system::system_error& e)
 	{
 		std::cout << "Fehler: " << e.what() << std::endl; // TODO: In dem GUI ausgeben anstatt der Konsole
-		return 1;
+		return;
 	}
+
+	// Es wird etwas zurückgegeben -> Aber nur trash ->  Ich glaube der Arduino muss die CLRF Zeichen verwenden
+	
 
 }
 
