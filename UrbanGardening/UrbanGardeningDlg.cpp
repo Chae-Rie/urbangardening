@@ -65,6 +65,7 @@ BEGIN_MESSAGE_MAP(CUrbanGardeningDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_STATUS_LIGHT, &CUrbanGardeningDlg::OnBnClickedStatusLight)
 END_MESSAGE_MAP()
 
 
@@ -170,3 +171,9 @@ void CUrbanGardeningDlg::ChangeAccess(BOOL CanConnect)
 	// GetDlgItem(IDC_CONNECT)->EnableWindow(!CanConnect); Beispiel wenn CanConnect FALSE
 }
 
+
+
+void CUrbanGardeningDlg::OnBnClickedStatusLight()
+{
+	
+}

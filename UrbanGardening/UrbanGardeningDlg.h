@@ -37,4 +37,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 	void ChangeAccess(BOOL CanConnect);
+public:
+	afx_msg void OnBnClickedStatusLight();
 };
