@@ -192,6 +192,7 @@ void CUrbanGardeningDlg::OnBnClickedConnect()
 		arduino.writeString("Test123\n");
 
 		std::cout << arduino.readLine() << std::endl;
+		std::string result = arduino.readLine();
 	}
 	catch(boost::system::system_error& e)
 	{

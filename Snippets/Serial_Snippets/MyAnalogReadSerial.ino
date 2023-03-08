@@ -14,16 +14,13 @@
 void setup() {
   // initialize serial communication at 9600 bits per second:
   Serial.begin(9600);
+  
 }
 
 // the loop routine runs over and over again forever:
 void loop() {
-  char input = Serial.read();
-  if (input == "Test123") {
-    Serial.print("Succeed");
-    
+  if (Serial.available()) {
+    String incomingData = Serial.readString();
+    Serial.println("Response");    
   };
-  Serial.println(input);
-  delay(1);        // lay in between reads for stability// de
-  
 }
