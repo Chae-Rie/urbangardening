@@ -41,4 +41,10 @@ public:
 	afx_msg void OnBnClickedStatusLight();
 	afx_msg void OnBnClickedConnect();
 	afx_msg void OnBnClickedDisconnect();
+	afx_msg void OnEnChangeEditComport();
+
+
+private:
+	HWND mainWindowHandle{};
+	std::string result;
 };

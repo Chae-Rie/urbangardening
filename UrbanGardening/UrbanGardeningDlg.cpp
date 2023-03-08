@@ -6,7 +6,7 @@
 #include "framework.h"
 #include "UrbanGardening.h"
 #include "UrbanGardeningDlg.h"
-#include "SerialConnection.h"
+#include "AsyncSerial.h"
 #include "afxdialogex.h"
 #include "boost/serialization/serialization.hpp"
 
@@ -70,6 +70,7 @@ BEGIN_MESSAGE_MAP(CUrbanGardeningDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_STATUS_LIGHT, &CUrbanGardeningDlg::OnBnClickedStatusLight)
 	ON_BN_CLICKED(IDC_CONNECT, &CUrbanGardeningDlg::OnBnClickedConnect)
 	ON_BN_CLICKED(IDC_DISCONNECT, &CUrbanGardeningDlg::OnBnClickedDisconnect)
+	ON_EN_CHANGE(IDC_EDIT_COMPORT, &CUrbanGardeningDlg::OnEnChangeEditComport)
 END_MESSAGE_MAP()
 
 
@@ -105,7 +106,7 @@ BOOL CUrbanGardeningDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-
+	mainWindowHandle = m_hWnd;
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -186,29 +187,31 @@ void CUrbanGardeningDlg::OnBnClickedStatusLight()
 
 void CUrbanGardeningDlg::OnBnClickedConnect()
 {
-	try 
-	{
-		SerialConnection arduino("COM3", 9600);
-		arduino.writeString("Test123\n");
-
-		std::cout << arduino.readLine() << std::endl;
-		std::string result = arduino.readLine();
-	}
-	catch(boost::system::system_error& e)
-	{
-		std::cout << "Fehler: " << e.what() << std::endl; // TODO: In dem GUI ausgeben anstatt der Konsole
-		return;
-	}
-
 	// Es wird etwas zurückgegeben -> Aber nur trash ->  Ich glaube der Arduino muss die CLRF Zeichen verwenden
 	
+	BufferedAsyncSerial arduino("COM3", 9600);
 
+	arduino.writeString("Test123\n");
+	
+	boost::this_thread::sleep(boost::posix_time::seconds(2));
+
+	std::cout << arduino.readStringUntil("\r\n") << std::endl;
+
+	arduino.close();
 }
 
 
 void CUrbanGardeningDlg::OnBnClickedDisconnect()
 {
+	SetDlgItemText(IDC_EDIT_COMPORT, CString(result.c_str()));
 	// Da es sich um keine richtige verbindungsorientierte Verbindung handelt, reicht es denke ich mal das Objekt zu
 	// löschen und den User darüber in Kenntnis zu setzen + Sperren der Buttons
 	// TODO: Add your control notification handler code here
+}
+
+
+void CUrbanGardeningDlg::OnEnChangeEditComport()
+{
+	//SetDlgItemText(IDC_EDIT_COMPORT, CString(result.c_str()));
+
 }
