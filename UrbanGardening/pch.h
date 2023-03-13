@@ -10,8 +10,4 @@
 // add headers that you want to pre-compile here
 #include "framework.h"
 #include <iostream>
-#include "boost/thread.hpp"
-#include "boost/asio.hpp"
-#include "boost/noncopyable.hpp"
-
 #endif //PCH_H

@@ -6,9 +6,8 @@
 #include "framework.h"
 #include "UrbanGardening.h"
 #include "UrbanGardeningDlg.h"
-#include "AsyncSerial.h"
 #include "afxdialogex.h"
-#include "boost/serialization/serialization.hpp"
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -187,17 +186,7 @@ void CUrbanGardeningDlg::OnBnClickedStatusLight()
 
 void CUrbanGardeningDlg::OnBnClickedConnect()
 {
-	// Es wird etwas zurückgegeben -> Aber nur trash ->  Ich glaube der Arduino muss die CLRF Zeichen verwenden
-	
-	BufferedAsyncSerial arduino("COM3", 9600);
 
-	arduino.writeString("Test123\n");
-	
-	boost::this_thread::sleep(boost::posix_time::seconds(2));
-
-	std::cout << arduino.readStringUntil("\r\n") << std::endl;
-
-	arduino.close();
 }
 
 

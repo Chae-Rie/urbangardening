@@ -100,7 +100,6 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AsyncSerial.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MessageCodes.h" />
     <ClInclude Include="pch.h" />
@@ -110,7 +109,6 @@
     <ClInclude Include="UrbanGardeningDlg.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AsyncSerial.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

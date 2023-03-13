@@ -36,9 +36,6 @@
     <ClInclude Include="MessageCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AsyncSerial.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UrbanGardening.cpp">
@@ -48,9 +45,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AsyncSerial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
