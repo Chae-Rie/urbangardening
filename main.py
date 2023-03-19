@@ -11,26 +11,30 @@ def quit():
 
 
 def request_light_state():
+    data_to_be_sent = "H"
     expected_size_of_answer = 4
-    arduino.write(bytes('H', 'UTF-8'))
-    light_var.set("State changed!")
+    arduino.write(bytes(data_to_be_sent, 'UTF-8'))
+    result = arduino.read(expected_size_of_answer)
+    light_var.set(result)
     # Request the sensor data
 
 
 def request_soil_humidity_state():
+    data_to_be_sent = "L"
     expected_size_of_answer = 4  #Jenachdem wie groß die erwartete Menge an bits ist
-    arduino.write(bytes('L', 'UTF-8'))
+    arduino.write(bytes(data_to_be_sent, 'UTF-8'))
     result = arduino.read(expected_size_of_answer)
-    print(result)
-    soil_humidity_var.set("State changed!")
+    soil_humidity_var.set(result)
     # Request the sensor data
 
 
 def request_air_humidity_state():
+    data_to_be_sent = "J"
     expected_size_of_answer = 4
-    arduino.write(bytes("air", "UTF-8"))
+    arduino.write(bytes(data_to_be_sent, "UTF-8"))
     result = arduino.read(expected_size_of_answer)
-    air_humidity_var.set(f"{result}")
+    #air_humidity_var.set(f"{result}")
+    air_humidity_var.set(result)
     # Request the sensor data
 
 
