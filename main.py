@@ -39,40 +39,51 @@ time.sleep(3)
 ser.write(bytes('L', 'UTF-8'))
 
 tkTop = tkinter.Tk()
-tkTop.geometry('700x500')
+tkTop.geometry('700x400')
 tkTop.title("USB-Wartungsschnittstelle")
 label3 = tkinter.Label(text='USB-Wartungsschnittstelle um die Komponenten der Schaltung abzufragen',
                        font=("Courier", 10, 'italic')).grid(
-    column=0, row=0, ipadx=10, padx=10, pady=15, sticky="W"
+    column=0, columnspan=2,  row=0, ipadx=10, padx=10, pady=15, sticky="W"
 )
 
 
 # Buttons
-light_button = tkinter.IntVar()
-light_button_state = tkinter.Button(tkTop,
-                              text="ON",
+light_button_var = tkinter.IntVar()
+light_button = tkinter.Button(tkTop,
+                              text="Request_light /ON",
                               command=request_light_state,
                               height=1,
                               fg="black",
-                              width=1,
+                              width=20,
                               bd=1,
                               activebackground='green'
                               )
 
-light_button_state.grid(column=0, row=1, ipadx=10, padx=10, pady=15, sticky="W")
+light_button.grid(column=0, row=1, ipadx=10, padx=10, pady=15, sticky="W")
 
-soil_humidity_button = tkinter.IntVar()
-soil_humidity_state = tkinter.Button(tkTop,
-                                    text="OFF",
+soil_humidity_var = tkinter.IntVar()
+soil_humidity_button = tkinter.Button(tkTop,
+                                    text="Request_soil_humidity /OFF",
                                     command=request_soil_humidity_state,
                                     height=1,
                                     fg="black",
-                                    width=1,
+                                    width=20,
                                     bd=1
                                     )
 
-soil_humidity_state.grid(column=0, row=2, ipadx=10, padx=10, pady=15, sticky="W")
+soil_humidity_button.grid(column=0, row=2, ipadx=10, padx=10, pady=15, sticky="W")
 
+air_humidity_var = tkinter.IntVar()
+air_humidity_button = tkinter.Button(
+    tkTop,
+    text="Request_air_humidity",
+    command=request_air_humidity_state,
+    height=1,
+    fg="black",
+    width=20,
+    bd=1
+)
+air_humidity_button.grid(column=0, row=3, ipadx=10, padx=10, pady=15, sticky="W")
 
 tkButtonQuit = tkinter.Button(
     tkTop,
@@ -89,12 +100,12 @@ tkButtonQuit.grid(column=0, row=4, ipadx=10, padx=10, pady=15, sticky="W")
 # Lables
 
 light_sensor_data = tkinter.Label(tkTop, text="Result of the light sensor").grid(
-    column=1, row=1, ipadx=10, padx=10, pady=15, sticky= "W")
+    column=1, row=1, padx=10, pady=15, sticky= "W")
 
 soil_humidity_sensor_data = tkinter.Label(tkTop, text="Result of the soil humidity sensor").grid(
-    column=1, row=2, ipadx=10, padx=10, pady=15, sticky= "W")
+    column=1, row=2, padx=10, pady=15, sticky= "W")
 
 air_humidity_sensor_data = tkinter.Label(tkTop, text="Result of the air humidity sensor").grid(
-    column=1, row=3, ipadx=10, padx=10, pady=15, sticky= "W")
+    column=1, row=3, padx=10, pady=15, sticky= "W")
 
 tkinter.mainloop()
