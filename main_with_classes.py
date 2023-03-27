@@ -1,5 +1,4 @@
 import serial
-import time
 import tkinter
 import threading
 
@@ -11,9 +10,15 @@ class USBInterface:
         self.tkTop.geometry('900x400')
         self.tkTop.title("USB-Wartungsschnittstelle")
 
+        self.light_label = tkinter.Label(self.tkTop, text="Aktuelle Lichtstärke:")
         self.light_sensor_data = tkinter.Label(self.tkTop, text="0", )
+        self.light_status = tkinter.Label(self.tkTop, text="N/A",)
+        self.soil_humidity_label = tkinter.Label(self.tkTop, text="Aktuelle Bodenfeuchte:")
         self.soil_humidity_sensor_data = tkinter.Label(self.tkTop, text="0", )
+        self.soil_humidity_status = tkinter.Label(self.tkTop, text="N/A",)
+        self.air_humidity_label = tkinter.Label(self.tkTop, text="Aktuelle Luftfeuchtigkeit:")
         self.air_humidity_sensor_data = tkinter.Label(self.tkTop, text="0", )
+        self.air_humidity_status = tkinter.Label(self.tkTop, text="N/A",)
 
         # Wird im Standardkonstruktor aufgerufen, ansonsten gibts kein Bild alla
         self.create_gui()
@@ -24,19 +29,21 @@ class USBInterface:
         label3.grid(column=0, columnspan=2, row=0, ipadx=10, padx=10, pady=15, sticky="W")
 
         # Labels
-        light_label = tkinter.Label(self.tkTop, text="Aktuelle Lichtstärke:")
-        light_label.grid(column=1, row=1, padx=1, pady=15, sticky="W")
+
+        self.light_label.grid(column=1, row=1, padx=1, pady=15, sticky="W")
         self.light_sensor_data.grid(column=2, row=1, padx=1, pady=15, sticky="W")
+        self.light_status.grid(column=3, row=1, padx=1, pady=15, sticky="W")
 
-        soil_humidity_label = tkinter.Label(self.tkTop, text="Aktuelle Bodenfeuchte:")
-        soil_humidity_label.grid(column=1, row=2, padx=1, pady=15, sticky="W")
+        self.soil_humidity_label.grid(column=1, row=2, padx=1, pady=15, sticky="W")
         self.soil_humidity_sensor_data.grid(column=2, row=2, padx=1, pady=15, sticky="W")
+        self.soil_humidity_status.grid(column=3, row=2, padx=1, pady=15, sticky="W")
 
-        air_humidity_label = tkinter.Label(self.tkTop, text="Aktuelle Luftfeuchtigkeit:")
-        air_humidity_label.grid(column=1, row=3, padx=1, pady=15, sticky="W")
+        self.air_humidity_label.grid(column=1, row=3, padx=1, pady=15, sticky="W")
         self.air_humidity_sensor_data.grid(column=2, row=3, padx=1, pady=15, sticky="W")
+        self.air_humidity_status.grid(column=3, row=3, padx=1, pady=15, sticky="W")
 
-        # Buttons and correspoding vars
+
+        # Buttons and corresponding vars
         light_button = tkinter.Button(self.tkTop,
                                       text="Request_light /ON",
                                       command=self.request_light_state,
@@ -69,7 +76,7 @@ class USBInterface:
         )
         air_humidity_button.grid(column=0, row=3, ipadx=10, padx=10, pady=15, sticky="W")
 
-        tkButtonQuit = tkinter.Button(
+        tkbuttonquit = tkinter.Button(
             self.tkTop,
             text="Quit",
             command=self.quit,
@@ -79,7 +86,7 @@ class USBInterface:
             bg='red',
             bd=1
         )
-        tkButtonQuit.grid(column=0, row=4, ipadx=10, padx=10, pady=15, sticky="W")
+        tkbuttonquit.grid(column=0, row=4, ipadx=10, padx=10, pady=15, sticky="W")
 
     def send_data(self, data):
         self.arduino.write(data.encode())
@@ -105,21 +112,21 @@ class USBInterface:
                 # label.config(text=data)
 
     def request_light_state(self):
-        data_to_be_sent = "H"
+        # data_to_be_sent = "H"
         self.send_data("H")
         thread = threading.Thread(target=self.read_data, args=("light",))
         thread.daemon = True
         thread.start()
 
     def request_soil_humidity_state(self):
-        data_to_be_sent = "L"
+        # data_to_be_sent = "L"
         self.send_data("L")
         thread = threading.Thread(target=self.read_data, args=("soil_humidity",))
         thread.daemon = True
         thread.start()
 
     def request_air_humidity_state(self):
-        data_to_be_sent = "J"
+        # data_to_be_sent = "J"
         self.send_data("J")
         thread = threading.Thread(target=self.read_data, args=("air_humidity",))
         thread.daemon = True

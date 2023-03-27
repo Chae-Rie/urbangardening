@@ -21,21 +21,21 @@ void loop() {
     // if it's a capital H (ASCII 72), turn on the LED:
     if (incomingByte == 'H' && !responded) {
       digitalWrite(ledPin, HIGH);
-      Serial.println("SetH"); //print out to serial monitor to check state
+      Serial.println("SentH"); //print out to serial monitor to check state
       responded = true;
     }
     // if it's an L (ASCII 76) turn off the LED:
     if (incomingByte == 'L' && !responded) {
       digitalWrite(ledPin, LOW);
-      Serial.println("SetL");
+      Serial.println("SentL");
       responded = true;
       //Serial.println("1234"); //print out to serial monitor to check state
     }
     if (incomingByte == 'J' && !responded){
-      Serial.println("5678");
+      Serial.println("SentJ");
       responded = true;
     }
-
+    responded = false;
   }
-  responded = false;
+  
 }
