@@ -6,6 +6,13 @@ int incomingByte;      // variable stores  serial data
 bool responded = false;
 
 void setup() {
+  
+  typedef struct {
+  unsigned int light;
+  unsigned int soil_humidity;
+  unsigned int air_humidity;
+  }plant_data;
+  
   // initialize serial communication:
   Serial.begin(9600);
   // initialize the LED pin as an output:
@@ -21,18 +28,18 @@ void loop() {
     // if it's a capital H (ASCII 72), turn on the LED:
     if (incomingByte == 'H' && !responded) {
       digitalWrite(ledPin, HIGH);
-      Serial.println("SentH"); //print out to serial monitor to check state
+      Serial.println("SentH\n"); //print out to serial monitor to check state
       responded = true;
     }
     // if it's an L (ASCII 76) turn off the LED:
     if (incomingByte == 'L' && !responded) {
       digitalWrite(ledPin, LOW);
-      Serial.println("SentL");
+      Serial.println("SentL\n");
       responded = true;
       //Serial.println("1234"); //print out to serial monitor to check state
     }
     if (incomingByte == 'J' && !responded){
-      Serial.println("SentJ");
+      Serial.println("SentJ\n");
       responded = true;
     }
     responded = false;

@@ -1,6 +1,7 @@
 import serial
 import tkinter
 import threading
+import struct
 
 
 class USBInterface:
@@ -9,6 +10,10 @@ class USBInterface:
         self.tkTop = tkinter.Tk()
         self.tkTop.geometry('900x400')
         self.tkTop.title("USB-Wartungsschnittstelle")
+
+        self.air_humidity = 0
+        self.soil_humidity = 0
+        self.light = 0
 
         self.light_label = tkinter.Label(self.tkTop, text="Aktuelle Lichtstärke:")
         self.light_sensor_data = tkinter.Label(self.tkTop, text="0", )
@@ -22,6 +27,9 @@ class USBInterface:
 
         # Wird im Standardkonstruktor aufgerufen, ansonsten gibts kein Bild alla
         self.create_gui()
+        thread = threading.Thread(target=self.read_data,)
+        thread.daemon = True
+        thread.start()
 
     def create_gui(self):
         label3 = tkinter.Label(text='USB-Wartungsschnittstelle um die Komponenten der Schaltung abzufragen',
@@ -91,46 +99,38 @@ class USBInterface:
     def send_data(self, data):
         self.arduino.write(data.encode())
 
-    def read_data(self, label):
+    def read_data(self):
         # die loop kann erstmal so durchlaufen
         while True:
             if self.arduino.in_waiting > 0:
-                # Lies die gesamt geschriebene Zeile aus, decodier sie und entferne die whitespaces
+                # Lies die gesamt geschriebene Zeile aus -> bis \n, decodier sie und entferne die whitespaces
                 # es wird aber nur eine Kopie vom String zurückgegeben -> beachte das.
-                data = self.arduino.readline().decode().rstrip()
 
-                if label == "light":
-                    self.light_sensor_data.config(text=data)
-                elif label == "soil_humidity":
-                    self.soil_humidity_sensor_data.config(text=data)
-                elif label == "air_humidity":
-                    self.air_humidity_sensor_data.config(text=data)
-                else:
-                    pass
-                # something bad happened -> gib eine Fehlermeldung aus
+                # passend für strings
+                data = self.arduino.readline().decode().strip()
 
-                # label.config(text=data)
+                components = data.split(',')
+                self.air_humidity = int(components[0])
+                self.soil_humidity = int(components[1])
+                self.light = int(components[2])
 
     def request_light_state(self):
         # data_to_be_sent = "H"
         self.send_data("H")
-        thread = threading.Thread(target=self.read_data, args=("light",))
-        thread.daemon = True
-        thread.start()
+
+        self.light_sensor_data.config(text=self.light)
 
     def request_soil_humidity_state(self):
         # data_to_be_sent = "L"
         self.send_data("L")
-        thread = threading.Thread(target=self.read_data, args=("soil_humidity",))
-        thread.daemon = True
-        thread.start()
+        self.soil_humidity_sensor_data.config(text=self.soil_humidity)
+
 
     def request_air_humidity_state(self):
         # data_to_be_sent = "J"
         self.send_data("J")
-        thread = threading.Thread(target=self.read_data, args=("air_humidity",))
-        thread.daemon = True
-        thread.start()
+        self.air_humidity_sensor_data.config(text=self.air_humidity)
+
 
     def quit(self):
         # self.arduino.write(bytes('L', 'UTF-8'))
