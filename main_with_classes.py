@@ -115,6 +115,7 @@ class USBInterface:
                 data = self.arduino.readline().decode().strip()
 
                 components = data.split(',')
+                # TODO: Die Liste components erzeugt manchmal einen out of range fehler -> irgendwas stimmt mit dem Index nicht
                 # Die Strings sind besser auseinanderzuhalten wenn delimiter verwendet werden
                 self.actual_air_humidity = int(components[0])
                 self.actual_soil_humidity = int(components[1])
