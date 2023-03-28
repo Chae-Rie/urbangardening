@@ -1,9 +1,6 @@
-import time
-
 import serial
 import tkinter
 import threading
-import struct
 
 
 class USBInterface:
@@ -128,21 +125,24 @@ class USBInterface:
         # Im Arduino code wird ein unsigned integer verwendet, aber sicherheitshalber wird gegen kleiner als getestet
 
         if self.actual_light <= 0:
-            self.light_status.config(text="Something went off with the lights, \nif pressing 'request_light_state' again doesn't help, please check!")
+            self.light_status.config(text="Something went off with the lights, \nif pressing 'request_light_state' "
+                                          "again doesn't help, please check!")
         else:
             self.light_status.config(text="Light sensor is working properly.")
 
     def request_soil_humidity_state(self):
         self.soil_humidity_sensor_data_label.config(text=self.actual_soil_humidity)
         if self.actual_soil_humidity <= 0:
-            self.soil_humidity_status.config(text="Something went off with the soil humidity-sensor, \nif pressing 'request_soil_humidity_state' again doesn't help, please check!")
+            self.soil_humidity_status.config(text="Something went off with the soil humidity-sensor, \nif pressing "
+                                                  "'request_soil_humidity_state' again doesn't help, please check!")
         else:
             self.soil_humidity_status.config(text="Humidity-sensor is working properly.")
 
     def request_air_humidity_state(self):
         self.air_humidity_sensor_data_label.config(text=self.actual_air_humidity)
         if self.actual_air_humidity <= 0:
-            self.air_humidity_status.config(text="Something went off with the air humidity-sensor, \nif pressing 'request_air_humidity_state' again doesn't help, please check!")
+            self.air_humidity_status.config(text="Something went off with the air humidity-sensor, \nif pressing "
+                                                 "'request_air_humidity_state' again doesn't help, please check!")
         else:
             self.air_humidity_status.config(text="Air humidity-sensor is working properly.")
 
