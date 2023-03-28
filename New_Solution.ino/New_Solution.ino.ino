@@ -8,13 +8,19 @@ void loop() {
   unsigned int soil_humidity = 2;
   unsigned int light = 3;
 
-  // Send the sensor data as plain text over serial
+  // im echten Code:
+  //unsigned int air_humidity = analogRead(A0);
+  //unsigned int soil_humidity = analogRead(A1);
+  //unsigned int light = analogRead(A2);  
+  
+
+  // Um die Daten auseinanderhalten zu können sind die delimiter "," wichtig
   Serial.print(air_humidity);
   Serial.print(",");
   Serial.print(soil_humidity);
   Serial.print(",");
   Serial.println(light);
 
-  // Wait for a moment before sending the next data
+  // Der Arduino soll zwischen dem Senden eine Pause bekommen
   delay(500);
 }
