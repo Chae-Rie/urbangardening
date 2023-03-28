@@ -4,9 +4,9 @@ void setup() {
 
 void loop() {
   // Read the sensor data
-  int air_humidity = 1;
-  int soil_humidity = 2;
-  int light = 3;
+  unsigned int air_humidity = 1;
+  unsigned int soil_humidity = 2;
+  unsigned int light = 3;
 
   // Send the sensor data as plain text over serial
   Serial.print(air_humidity);
@@ -16,5 +16,5 @@ void loop() {
   Serial.println(light);
 
   // Wait for a moment before sending the next data
-  delay(1000);
+  delay(500);
 }
