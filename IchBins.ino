@@ -3,8 +3,8 @@
 #include <Wire.h>
 #include <Adafruit_HTU21DF.h>
 
-int Bodenfeuchte = 0;
-int licht = 0;
+int soilMoisture = 0;
+int light = 0;
 
 LiquidCrystal_I2C lcd(0x27,20,4);
 Adafruit_HTU21DF HTU21 = Adafruit_HTU21DF();
@@ -35,9 +35,9 @@ void loop()
   lcd.setCursor(12, 0);
   lcd.print("T");
 
-  Bodenfeuchte = analogRead(A0);
+  soilMoisture = analogRead(A0);
   lcd.setCursor(0, 1);
-  lcd.print(Bodenfeuchte);
+  lcd.print(soilMoisture);
 
   int tempC = HTU21.readTemperature();  
 
@@ -52,9 +52,9 @@ void loop()
   lcd.setCursor(12, 1);
   lcd.print(relative_hum);
 
-  licht = analogRead(A1);
+  light = analogRead(A1);
 
-  if (licht > 700) {
+  if (light > 700) {
     digitalWrite(2, HIGH);
   } else {
     digitalWrite(2, LOW);
