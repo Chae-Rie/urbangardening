@@ -1,20 +1,22 @@
 import serial
 import tkinter
+import time
 import threading
-
 
 class USBInterface:
     def __init__(self, port, baudrate):
-        self.arduino = serial.Serial(port, baudrate)
+        #self.arduino = serial.Serial(port, baudrate)
+        self.arduino = serial.Serial(port, baudrate, timeout=1)
+        time.sleep(2)
         self.tkTop = tkinter.Tk()
         self.tkTop.geometry('1000x400')
         self.tkTop.title("USB-Wartungsschnittstelle")
 
         # Nutzen von vordefinierten Standardwerten, damit die GUI nicht leer steht.
-        self.actual_air_humidity = 0
-        self.actual_soil_humidity = 0
-        self.actual_light = 0
-        self.actual_temperature = 0
+        self.actual_air_humidity = 1
+        self.actual_soil_humidity = 1
+        self.actual_light = 1
+        self.actual_temperature = 1
 
         self.light_label = tkinter.Label(self.tkTop, text="Aktuelle Lichtstärke:")
         self.light_sensor_data_label = tkinter.Label(self.tkTop, text="0", )
@@ -119,7 +121,7 @@ class USBInterface:
         tkbuttonquit.grid(column=0, row=5, ipadx=10, padx=10, pady=15, sticky="W")
 
     def start_reading_thread(self):
-        thread = threading.Thread(target=self.read_data,)
+        thread = threading.Thread(target=self.read_data)
         thread.daemon = True
         thread.start()
 
@@ -134,13 +136,14 @@ class USBInterface:
                 # es wird aber nur eine Kopie vom String zurückgegeben -> beachte das.
 
                 data = self.arduino.readline().decode().strip()
-
                 components = data.split(',')
+
                 # TODO: Die Liste components erzeugt manchmal einen out of range fehler -> irgendwas stimmt mit dem Index nicht
                 # Die Strings sind besser auseinanderzuhalten wenn delimiter verwendet werden
                 self.actual_air_humidity = int(components[0])
                 self.actual_soil_humidity = int(components[1])
                 self.actual_light = int(components[2])
+                self.actual_temperature = int(components[3])
 
     def request_light_state(self):
         self.light_sensor_data_label.config(text=self.actual_light)
@@ -181,5 +184,5 @@ class USBInterface:
 
 
 if __name__ == '__main__':
-    USB = USBInterface("COM3", 9600) # Our Arduino
+    USB = USBInterface("COM8", 9600) # Our Arduino
     USB.tkTop.mainloop()
