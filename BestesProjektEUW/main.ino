@@ -73,9 +73,9 @@ void loop()
   Serial.print(",");
   Serial.print(soilMoisture);
   Serial.print(",");
-  Serial.println(light);
-  Serial.println(",");
-  Serial.println(tempC);
+  Serial.print(light);
+  Serial.print(",");
+  Serial.print(tempC);
 
   delay(1000);
 }
